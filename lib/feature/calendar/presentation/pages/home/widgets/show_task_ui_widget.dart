@@ -42,7 +42,7 @@ class ShowTaskUi extends StatelessWidget {
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
               Text(
-                'Watching Football',
+                title,
                 style: AppTextStyle.w600.copyWith(
                   fontSize: 14.sp,
                   color: textColor,
@@ -50,7 +50,7 @@ class ShowTaskUi extends StatelessWidget {
               ),
               5.verticalSpace,
               Text(
-                'Manchester United vs Arsenal (Premiere League)',
+                subtitle,
                 style: AppTextStyle.w400.copyWith(
                   fontSize: 8.sp,
                   color: textColor,
@@ -69,7 +69,7 @@ class ShowTaskUi extends StatelessWidget {
                       ),
                       4.horizontalSpace,
                       Text(
-                        '17:00 - 18:30',
+                        firstTime + ' - ' + secondTime,
                         style: AppTextStyle.w500.copyWith(
                           fontSize: 10,
                           color: textColor,
@@ -87,7 +87,7 @@ class ShowTaskUi extends StatelessWidget {
                             ),
                             4.horizontalSpace,
                             Text(
-                              'Stamford Bridge',
+                              location.toString(),
                               style: AppTextStyle.w500.copyWith(
                                 fontSize: 10,
                                 color: textColor,

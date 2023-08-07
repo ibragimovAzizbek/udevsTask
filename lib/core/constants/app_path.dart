@@ -4,4 +4,6 @@ class IconPath {
   static String right = 'assets/icons/right_icon.svg';
   static String clock = 'assets/icons/clock.svg';
   static String location = 'assets/icons/location.svg';
+  static String edit2 = 'assets/icons/edit_2.svg';
+  static String delete = 'assets/icons/delete.svg';
 }

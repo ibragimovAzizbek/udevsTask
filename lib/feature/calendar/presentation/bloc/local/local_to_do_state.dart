@@ -1,4 +1,5 @@
 import 'package:equatable/equatable.dart';
+import 'package:todoapp/feature/calendar/data/models/to_do_model.dart';
 
 abstract class LocalToDoState extends Equatable {
   final List? data;
@@ -7,7 +8,7 @@ abstract class LocalToDoState extends Equatable {
   const LocalToDoState({this.data, this.error});
 
   @override
-  List<Object> get props => [data!, error!];
+  List<Object> get props => [];
 }
 
 class LocalToDoInitial extends LocalToDoState {
@@ -19,7 +20,7 @@ class LocalToDoLoading extends LocalToDoState {
 }
 
 class LocalToDoDone extends LocalToDoState {
-  const LocalToDoDone() : super();
+  const LocalToDoDone(List<ToDoModel> data) : super(data: data);
 }
 
 class LocalToDoError extends LocalToDoState {

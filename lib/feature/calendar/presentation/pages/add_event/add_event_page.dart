@@ -10,13 +10,15 @@ import 'package:todoapp/feature/calendar/presentation/pages/add_event/widgets/dr
 import 'package:todoapp/feature/calendar/presentation/pages/add_event/widgets/input_desctioption.dart';
 
 class AddEvenetPage extends StatelessWidget {
-  const AddEvenetPage({super.key});
+  final bool isEditPage;
+  final int? id;
+  const AddEvenetPage({super.key, this.isEditPage = false, this.id = null});
 
   @override
   Widget build(BuildContext context) {
-    final blocW = context.watch<LocalToDoBloc>();
+    final blocW = context.watch<LocalToDoCubit>();
+    final blocR = context.read<LocalToDoCubit>();
     final mediaQuery = MediaQuery.of(context);
-
     return Scaffold(
       appBar: AppBar(backgroundColor: AppColor.white),
       body: Padding(
@@ -76,14 +78,19 @@ class AddEvenetPage extends StatelessWidget {
             ),
           ),
           child: Text(
-            'Add',
+            isEditPage ? "Edit" : 'Add',
             style: AppTextStyle.w400.copyWith(
               fontSize: 16.sp,
               color: AppColor.white,
             ),
           ),
           onPressed: () {
-            Navigator.pop(context);
+            isEditPage
+                ? blocR.updateItem(id!)
+                : blocR.addItem().then(
+                      (value) => Navigator.pushNamedAndRemoveUntil(
+                          context, '/main', (route) => false),
+                    );
           },
         ),
       ),

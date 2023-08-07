@@ -16,7 +16,8 @@ class CalendarPage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final blocR = context.read<LocalToDoBloc>();
+    final blocR = context.read<LocalToDoCubit>();
+    final blocW = context.watch<LocalToDoCubit>();
     return Scaffold(
       appBar: AppBar(
         title: Column(
@@ -77,19 +78,34 @@ class CalendarPage extends StatelessWidget {
                 ],
               ),
               8.verticalSpace,
-              ListView.builder(
-                itemCount: 2,
-                shrinkWrap: true,
-                physics: const NeverScrollableScrollPhysics(),
-                itemBuilder: (context, index) {
-                  return ShowTaskUi(
-                    basicColor: index == 1 ? AppColor.red : AppColor.blue,
-                    title: 'Watching Football',
-                    subtitle: 'Manchester United vs Arsenal (Premiere League)',
-                    firstTime: '17:00',
-                    secondTime: '18:30',
-                    textColor: index == 1 ? AppColor.bF2200 : AppColor.c056EA1,
-                    location: index == 1 ? null : 'Stamford Bridge',
+              ValueListenableBuilder(
+                valueListenable: blocW.eventList,
+                builder: (context, value, child) {
+                  return ListView.builder(
+                    itemCount: blocW.eventList.value.length,
+                    shrinkWrap: true,
+                    physics: const NeverScrollableScrollPhysics(),
+                    itemBuilder: (context, index) {
+                      final data = blocW.eventList.value[index];
+                      return InkWell(
+                        child: ShowTaskUi(
+                          basicColor: AppColor.blue,
+                          title: data['title'],
+                          subtitle: data['description'],
+                          firstTime: '17:00',
+                          secondTime: '18:30',
+                          textColor: AppColor.c056EA1,
+                          location: data['location'],
+                        ),
+                        onTap: () {
+                          Navigator.pushNamed(
+                            context,
+                            '/edit',
+                            arguments: data,
+                          );
+                        },
+                      );
+                    },
                   );
                 },
               )

@@ -6,10 +6,10 @@ import 'package:todoapp/config/theme/app_theme.dart';
 import 'package:todoapp/feature/calendar/presentation/bloc/local/local_to_do_bloc.dart';
 
 void main() {
-  WidgetsFlutterBinding.ensureInitialized();
-  
+  // WidgetsFlutterBinding.ensureInitialized();
+
   runApp(MultiBlocProvider(
-      providers: [BlocProvider(create: (context) => LocalToDoBloc())],
+      providers: [BlocProvider(create: (context) => LocalToDoCubit())],
       child: const MyApp()));
 }
 

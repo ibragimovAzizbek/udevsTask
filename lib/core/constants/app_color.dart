@@ -13,6 +13,9 @@ class AppColor {
   static Color bF2200 = const Color(0xFFBF2200);
   static Color gray900 = const Color(0xFF111827);
   static Color gray100 = const Color(0xFFF3F4F6);
+  static Color c7C7B7B = const Color(0xFF7C7B7B);
+  static Color c999999 = const Color(0xFF999999);
+  static Color fEE8E9 = const Color(0xFFFEE8E9);
 
   static Color white = Colors.white;
 

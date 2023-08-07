@@ -10,7 +10,7 @@ class InputDescription extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final blocW = context.watch<LocalToDoBloc>();
+    final blocW = context.watch<LocalToDoCubit>();
     return Container(
       alignment: Alignment.topLeft,
       padding: EdgeInsets.only(top: 5.h, left: 10.w),

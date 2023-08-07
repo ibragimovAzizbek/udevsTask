@@ -11,8 +11,8 @@ class SelectColor extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final blocW = context.watch<LocalToDoBloc>();
-    final blocR = context.read<LocalToDoBloc>();
+    final blocW = context.watch<LocalToDoCubit>();
+    final blocR = context.read<LocalToDoCubit>();
     return ValueListenableBuilder(
       valueListenable: blocW.dropDownValue,
       builder: (context, value, child) {
