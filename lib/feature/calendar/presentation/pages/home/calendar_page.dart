@@ -47,48 +47,50 @@ class CalendarPage extends StatelessWidget {
       ),
       body: Padding(
         padding: EdgeInsets.symmetric(horizontal: 28.w),
-        child: Column(
-          crossAxisAlignment: CrossAxisAlignment.center,
-          children: [
-            CalendarDatePicker(
-              initialDate: DateTime.now(),
-              firstDate: DateTime(1950),
-              lastDate: DateTime(2950),
-              onDateChanged: (s) {
-                print(s);
-              },
-            ),
-            Row(
-              mainAxisAlignment: MainAxisAlignment.spaceBetween,
-              children: [
-                Text(
-                  'Schedule',
-                  style: AppTextStyle.w600.copyWith(
-                    color: AppColor.c292929,
-                    fontSize: 14.sp,
+        child: SingleChildScrollView(
+          child: Column(
+            crossAxisAlignment: CrossAxisAlignment.center,
+            children: [
+              CalendarDatePicker(
+                initialDate: DateTime.now(),
+                firstDate: DateTime(1950),
+                lastDate: DateTime(2950),
+                onDateChanged: (s) {
+                  print(s);
+                },
+              ),
+              Row(
+                mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                children: [
+                  Text(
+                    'Schedule',
+                    style: AppTextStyle.w600.copyWith(
+                      color: AppColor.c292929,
+                      fontSize: 14.sp,
+                    ),
                   ),
-                ),
-                const AddEvenetButton(),
-              ],
-            ),
-            8.verticalSpace,
-            ListView.builder(
-              itemCount: 2,
-              shrinkWrap: true,
-              physics: const NeverScrollableScrollPhysics(),
-              itemBuilder: (context, index) {
-                return ShowTaskUi(
-                  basicColor: index == 1 ? AppColor.red : AppColor.blue,
-                  title: 'Watching Football',
-                  subtitle: 'Manchester United vs Arsenal (Premiere League)',
-                  firstTime: '17:00',
-                  secondTime: '18:30',
-                  textColor: index == 1 ? AppColor.bF2200 : AppColor.c056EA1,
-                  location: index == 1 ? null : 'Stamford Bridge',
-                );
-              },
-            )
-          ],
+                  const AddEvenetButton(),
+                ],
+              ),
+              8.verticalSpace,
+              ListView.builder(
+                itemCount: 2,
+                shrinkWrap: true,
+                physics: const NeverScrollableScrollPhysics(),
+                itemBuilder: (context, index) {
+                  return ShowTaskUi(
+                    basicColor: index == 1 ? AppColor.red : AppColor.blue,
+                    title: 'Watching Football',
+                    subtitle: 'Manchester United vs Arsenal (Premiere League)',
+                    firstTime: '17:00',
+                    secondTime: '18:30',
+                    textColor: index == 1 ? AppColor.bF2200 : AppColor.c056EA1,
+                    location: index == 1 ? null : 'Stamford Bridge',
+                  );
+                },
+              )
+            ],
+          ),
         ),
       ),
     );

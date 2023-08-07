@@ -11,6 +11,10 @@ class AppColor {
   static Color c056EA1 = const Color(0xFF056EA1);
 
   static Color bF2200 = const Color(0xFFBF2200);
+  static Color gray900 = const Color(0xFF111827);
+  static Color gray100 = const Color(0xFFF3F4F6);
 
   static Color white = Colors.white;
+
+  static List<Color> selectColorList = [blue, red, eE8F00];
 }
