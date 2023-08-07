@@ -1,9 +1,11 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:todoapp/core/constants/app_color.dart';
 import 'package:todoapp/core/constants/app_path.dart';
 import 'package:todoapp/core/style/text_style.dart';
+import 'package:todoapp/feature/calendar/presentation/bloc/local/local_to_do_bloc.dart';
 import 'package:todoapp/feature/calendar/presentation/pages/home/widgets/add_event_button.dart';
 import 'package:todoapp/feature/calendar/presentation/pages/home/widgets/show_task_ui_widget.dart';
 
@@ -14,6 +16,7 @@ class CalendarPage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final blocR = context.read<LocalToDoBloc>();
     return Scaffold(
       appBar: AppBar(
         title: Column(
@@ -55,8 +58,9 @@ class CalendarPage extends StatelessWidget {
                 initialDate: DateTime.now(),
                 firstDate: DateTime(1950),
                 lastDate: DateTime(2950),
-                onDateChanged: (s) {
-                  print(s);
+                currentDate: DateTime.now(),
+                onDateChanged: (time) {
+                  blocR.changeTime(time);
                 },
               ),
               Row(

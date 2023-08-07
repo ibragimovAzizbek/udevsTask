@@ -16,6 +16,13 @@ class LocalToDoBloc extends Bloc<LocalToDoEvent, LocalToDoState> {
 
   ValueNotifier<Color?> dropDownValue = ValueNotifier(null);
 
+  DateTime taskTime = DateTime.now();
+
+  changeTime(DateTime time) {
+    taskTime = time;
+    print(taskTime);
+  }
+
   changeColor(Color color) {
     dropDownValue.value = color;
   }

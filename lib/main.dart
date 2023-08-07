@@ -6,6 +6,8 @@ import 'package:todoapp/config/theme/app_theme.dart';
 import 'package:todoapp/feature/calendar/presentation/bloc/local/local_to_do_bloc.dart';
 
 void main() {
+  WidgetsFlutterBinding.ensureInitialized();
+  
   runApp(MultiBlocProvider(
       providers: [BlocProvider(create: (context) => LocalToDoBloc())],
       child: const MyApp()));
