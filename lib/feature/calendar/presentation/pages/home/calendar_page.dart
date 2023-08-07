@@ -79,14 +79,14 @@ class CalendarPage extends StatelessWidget {
               ),
               8.verticalSpace,
               ValueListenableBuilder(
-                valueListenable: blocW.eventList,
+                valueListenable: blocW.tasksOnTheSelectedDay,
                 builder: (context, value, child) {
                   return ListView.builder(
-                    itemCount: blocW.eventList.value.length,
+                    itemCount: blocW.tasksOnTheSelectedDay.value.length,
                     shrinkWrap: true,
                     physics: const NeverScrollableScrollPhysics(),
                     itemBuilder: (context, index) {
-                      final data = blocW.eventList.value[index];
+                      final data = blocW.tasksOnTheSelectedDay.value[index];
                       return InkWell(
                         child: ShowTaskUi(
                           basicColor: AppColor.blue,

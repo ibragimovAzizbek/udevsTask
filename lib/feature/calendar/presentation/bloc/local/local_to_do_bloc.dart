@@ -20,6 +20,9 @@ class LocalToDoCubit extends Cubit<LocalToDoState> {
 
   ValueNotifier<List<Map<String, dynamic>>> eventList = ValueNotifier([]);
 
+  ValueNotifier<List<Map<String, dynamic>>> tasksOnTheSelectedDay =
+      ValueNotifier([]);
+
   checkStatus(int? id) {
     if (id != null) {
       final existingJournal =
@@ -77,6 +80,9 @@ class LocalToDoCubit extends Cubit<LocalToDoState> {
   changeTime(DateTime time) {
     taskTime = time;
     print(taskTime);
+    tasksOnTheSelectedDay.value = eventList.value
+        .where((element) => DateTime.parse(element['time']).day == taskTime.day)
+        .toList();
   }
 
   changeColor(Color color) {
